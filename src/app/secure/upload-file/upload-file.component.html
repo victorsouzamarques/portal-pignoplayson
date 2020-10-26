@@ -1,0 +1,47 @@
+<form class="form-signin" [formGroup]="tableForm" (ngSubmit)="openDialog()">
+  <div class="form-group">
+    <input
+      type="file"
+      formControlName="document"
+      class="form-control"
+      accept=".xlsx"
+      [ngClass]="{ 'is-invalid': submitted && f.document.errors }"
+      (change)="setDocument($event.target.files)"
+    />
+    <div *ngIf="submitted && f.document.errors" class="invalid-feedback">
+      <div *ngIf="f.document.errors.required">
+        É necessario fazer upload de um arquivo.
+      </div>
+      <div *ngIf="!fileExtensionError">O tipo do arquivo tem que ser .XLSX</div>
+    </div>
+    <div class="error-type" *ngIf="!fileExtensionError">
+      <div *ngIf="!fileExtensionError">O tipo do arquivo tem que ser .XLSX</div>
+    </div>
+  </div>
+  <div class="form-label-group form-group">
+    <label>Valor</label>
+    <input
+      type="number"
+      formControlName="value"
+      class="form-control"
+      [ngClass]="{ 'is-invalid': submitted && f.value.errors }"
+    />
+    <div *ngIf="submitted && f.value.errors" class="invalid-feedback">
+      <div *ngIf="f.value.errors.required">
+        É necessario preencher o campo valor.
+      </div>
+    </div>
+  </div>
+  <div class="form-group">
+    <button class="btn" [disabled]="!fileExtensionError">Enviar</button>
+  </div>
+</form>
+
+<ng-template #customLoadingTemplate>
+  <div class="custom-class"></div>
+</ng-template>
+<ngx-loading
+  [show]="loading"
+  [config]="{ backdropBorderRadius: '3px' }"
+  [template]="customLoadingTemplate"
+></ngx-loading>

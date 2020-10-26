@@ -1,0 +1,18 @@
+<form>
+<div class="mt-2" class="form-group">
+  <p>Coloque o valor que quer acrecentar no range de expiração.</p>
+    <input class="form-control" [(ngModel)]="data.valueRange" placeholder="Coloque um valor para o range" name="valueRange">
+</div>
+<div class="mt-2" class="form-group">
+  <label>Escolha um parametro</label>
+    <select class="form-control" [(ngModel)]="data.optionChangeRange" name="optionChangeRange">
+      <option value="" disabled selected>Escolha um parametro</option>
+      <option value="DIAS">Dias</option>
+      <option value="MESES">Meses</option>
+      <option value="ANOS">Anos</option>
+    </select>
+</div>
+<div class="mt-2">
+  <button type="button" class="btn btn-primary" [mat-dialog-close]="data" cdkFocusInitial>Enviar</button>
+</div>
+</form>

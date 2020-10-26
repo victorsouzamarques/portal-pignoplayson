@@ -1,0 +1,122 @@
+<div *ngIf="reportRecalc === false">
+<div class="search-bar mt-4 p-3 p-lg-1 pl-lg-4">
+  <form [formGroup]="recalculationForm" (ngSubmit)="search()">
+    <div class="row">
+      <div class="col-lg-3 d-flex align-items-center form-group">
+        <div class="input-label-absolute input-label-absolute-right w-100">
+          <input autocomplete="off" type="text" formControlName="cpfCnpj" placeholder="Cole uma lista de cnpj aqui" [ngClass]="{ 'is-invalid': submitted && f.cpfCnpj.errors }" id="cnpjlist" class="form-control border-0 shadow-0">
+        </div>
+      </div>
+      <div class="col-lg-3 d-flex align-items-center">
+        <select formControlName="tipoParametro" [ngClass]="{ 'is-invalid': submitted && f.tipoParametro.errors }" class="form-control">
+          <option value="" selected>Escolha um parametro</option>
+          <option value="DIAS">Dias</option>
+          <option value="MESES">Meses</option>
+          <option value="ANOS">Anos</option>
+        </select>
+      </div>
+      <div class="col-lg-3 d-flex align-items-center form-group">
+        <div class="input-label-absolute input-label-absolute-right w-100">
+          <input autocomplete="off" type="text" formControlName="rangeDataExpiracao" placeholder="Range data de expiração" id="data-final" [ngClass]="{ 'is-invalid': submitted && f.rangeDataExpiracao.errors }" class="form-control border-0 shadow-0">
+        </div>
+      </div>
+      <div class="col-lg-3 d-flex align-items-center div-button">
+          <button class="btn btn-block rounded-btn">Procurar </button>
+      </div>
+    </div>
+  </form>
+</div>
+
+<div class="action-buttons mt-2">
+  <div class="row">
+    <div *ngIf="searchOn === true" class="col-sm mt-2 d-flex justify-content-start">
+      <button (click)="generateArchive()" class="col-lg-4 btn btn-block rounded-btn">Gerar Arquivo</button>
+    </div>
+
+    <div *ngIf="searchOn === true" class="col-sm mt-2 d-flex justify-content-end">
+      <button (click)="openDialog()" class="col-lg-4 btn btn-block rounded-btn">Recalcular</button>
+    </div>
+  </div>
+</div>
+
+<table class="table mt-4" *ngIf="searchOn === true">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">CNPJ</th>
+      <th scope="col">Razão social</th>
+      <th scope="col">Data de expiração</th>
+      <th scope="col">Qtd pontos</th>
+      <th scope="col">Ação</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let cnpj of listaPontosExpirados; let i = index">      
+      <th scope="row">{{cnpj.cpfCnpj}}</th>
+      <td *ngIf="cnpj.razaoSocial !== null">{{cnpj.razaoSocial}}</td>
+      <td *ngIf="cnpj.razaoSocial === null">---------</td>
+      <td>{{this.utilsServ.dateFormat(cnpj.dataExpiracaoPonto)}}</td>
+      <td>{{cnpj.qtdePontos}}</td>
+      <td><mat-checkbox  [checked]="this.checks[i].check === 'true'" id="{{cnpj.id}}" (click)="checkboxCheck(cnpj)"></mat-checkbox></td>
+    </tr>
+  </tbody>
+</table>
+
+<!-- <div>
+  <ul class="text-center">
+    <li class="mr-1" *ngFor="let page of arrayPages">
+      <a (click)="search(page)">{{page}}</a>
+    </li>
+  </ul>
+</div>
+</div> -->
+
+<div class="paginate-block">
+  <ul class="row">
+    <li *ngIf="searchOn === true" class="col-sm mt-2 d-flex">
+      <button *ngIf="antShow === true" (click)="search(false)" class="col-lg-4 btn btn-block rounded-btn">Anterior</button>
+    </li>
+    <li *ngIf="searchOn === true" class="col-sm mt-2 d-flex justify-content-end">
+      <button *ngIf="proxShow === true" (click)="search(true)" class="col-lg-4 btn btn-block rounded-btn">Próximo</button>
+    </li>
+  </ul>
+</div>
+</div>
+
+<div *ngIf="reportRecalc === true">
+    <div class="action-buttons mt-2">
+      <div class="row">
+        <div  class="col-sm mt-2 d-flex justify-content-start">
+          <button (click)="goBack()" class="col-lg-4 btn btn-block rounded-btn">Voltar</button>
+        </div>
+    
+        <div class="col-sm mt-2 d-flex justify-content-end">
+            <button (click)="sendRecalc()" class="col-lg-2 btn btn-block rounded-btn">Confirmar</button>
+        </div>
+      </div>
+    </div>
+
+  <table class="table mt-4">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">CNPJ</th>
+        <th scope="col">Data de expiração</th>
+        <th scope="col">Nova data de expiração</th>
+        <th scope="col">Qtd pontos</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let checks of checksTrue; let i = index">      
+        <th scope="row">{{checks.cnpj}}</th>
+        <td>{{checks.data}}</td>
+        <td>{{checks.newData}}</td>
+        <td>{{checks.qtdePontos}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<ng-template #customLoadingTemplate>
+  <div class="custom-class">
+  </div>
+</ng-template>
+<ngx-loading [show]="loading"  [config]="{ backdropBorderRadius: '3px' }" [template]="customLoadingTemplate"></ngx-loading>

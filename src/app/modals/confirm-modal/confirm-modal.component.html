@@ -1,0 +1,13 @@
+<div class="modal-header">
+  <h5 class="modal-title">Confirmação de envio</h5>
+  <button type="button" class="close" data-dismiss="modal" aria-label="Close" [mat-dialog-close]="false">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  <p>Você tem certeza que deseja enviar esse arquivo?</p>
+</div>
+<div class="modal-footer">
+  <button type="button" class="btn btn-primary" [mat-dialog-close]="true">Enviar</button>
+  <button type="button" class="btn btn-secondary" data-dismiss="modal" [mat-dialog-close]="false">Fechar</button>
+</div>

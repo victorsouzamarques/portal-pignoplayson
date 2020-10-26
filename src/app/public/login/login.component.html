@@ -1,0 +1,22 @@
+<form class="form-signin" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+  <div class="text-center mb-4">
+    <img class="mb-4" src="assets/imgs/banco-mare-logo-color-1.png" alt="" width="200" height="55">
+  </div>
+  <div class="form-label-group form-group">
+      <label>Client Id</label>
+      <input type="text" formControlName="client_id" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.client_id.errors }" />
+      <div *ngIf="submitted && f.client_id.errors" class="invalid-feedback">
+          <div *ngIf="f.client_id.errors.required">É necessario preencher o campo Client Id.</div>
+      </div>    
+  </div>
+  <div class="form-label-group form-group">      
+      <label>Client Secret</label>
+      <input type="password" formControlName="client_secret" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.client_secret.errors }" />
+      <div *ngIf="submitted && f.client_secret.errors" class="invalid-feedback">
+          <div *ngIf="f.client_secret.errors.required">É necessario preencher o campo Client Secret.</div>
+      </div>
+  </div>
+  <p *ngIf="!credencialsCorrect" class="invalid-user">Client Id ou Client Secret incorreta.</p>
+  <button class="btn btn-lg btn-primary btn-block" type="submit">Login</button>
+</form>
+

@@ -1,0 +1,11 @@
+<nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
+  <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="/home">Maré Transferência</a>
+  <ul class="navbar-nav px-3">
+    <li class="nav-item text-nowrap">
+        <button class="dropdown-header" mat-button [matMenuTriggerFor]="menu">Sair<svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="sort-down" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512" class="svg-inline--fa fa-sort-down fa-w-10 fa-2x"><path fill="currentColor" d="M41 288h238c21.4 0 32.1 25.9 17 41L177 448c-9.4 9.4-24.6 9.4-33.9 0L24 329c-15.1-15.1-4.4-41 17-41z" class=""></path></svg></button>
+        <mat-menu #menu="matMenu">
+          <button mat-menu-item (click)="logout()">Sair</button>
+        </mat-menu>
+    </li>
+  </ul>
+</nav>

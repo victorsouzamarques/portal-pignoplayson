@@ -1,0 +1,26 @@
+nav {
+    background-color: #292D36 !important;
+}
+
+a {
+    cursor: pointer;
+}
+
+.dropdown-header {
+    color: #ffffff;
+}
+
+.dropdown-header:focus {
+    outline: none;
+}
+
+.mat-menu-item {
+    outline: none;
+}
+
+.dropdown-header svg {
+    color: white;
+    width: 15px;
+    vertical-align: text-bottom;
+    margin-left: 5px;
+}

@@ -1,0 +1,28 @@
+.sucess-snackbar {
+    background-color: rgb(0, 66, 0);
+    color:white;
+}
+.error-snackbar {
+    background: rgb(168, 0, 0);
+    color:white;
+}
+button {
+    background-color: #470751;
+    border-color: #470751;
+    color: #fff;
+}
+button:hover {
+    background-color: #fff;
+    color: #470751;
+    border-color: #470751;
+}
+button:active {
+    background-color: #fff !important;
+    color: #470751 !important;
+    border-color: #470751 !important;
+}
+.error-type{
+    margin-top: 10px;
+    color: #dc3545;
+    font-size: 80%;
+}

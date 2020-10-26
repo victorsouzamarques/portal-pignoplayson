@@ -1,0 +1,85 @@
+.search-bar {
+    border-radius: 10rem;
+    background: #fff;
+    box-shadow: 0 0 1rem rgba(0,0,0,0.15);
+}
+
+.search-bar .form-control {
+    height: calc(1.5em + 1rem + 2px);
+}
+
+.search-bar {    
+    padding-top: 0px !important;
+    padding-bottom: 0px !important; 
+}
+
+.rounded-btn {
+    border-radius: 1.1rem !important;
+    background-color: #10BA54;
+    border-color: #10BA54;
+    color: white;
+}
+
+.form-group {
+    margin: 0px !important;
+}
+
+.div-button {
+    padding-right: 11px !important;
+}
+
+.error-field{
+    padding: 15px;
+    border-radius: 5px;
+    background-color: #dc3545;
+    margin-top: 10px;
+    color: #fff;
+    font-size: 80%;
+}
+
+.card-content{
+    margin-top: 40px;
+}
+
+li{
+    display: inline-block;
+    list-style: none;
+}
+
+ul{
+    padding-left: 0px;
+    margin-bottom: 0px;
+}
+
+a {
+    cursor: pointer;
+    color: #10BA54 !important;
+    font-weight: bolder;
+    text-decoration: underline !important;
+    font-size: 20px;
+}
+
+mat-card {
+    padding-top: 0px;
+    padding-bottom: 10px;
+    max-height: 205px;
+}
+/** No CSS for this example */
+::ng-deep .mat-checkbox .mat-checkbox-frame {
+    border-color: #10BA54;
+}
+
+::ng-deep .mat-checkbox-checked .mat-checkbox-background {
+  background-color: #10BA54 !important;
+}
+
+::ng-deep .mat-checkbox-label{
+    text-align: left!important;
+}
+::ng-deep .mat-checkbox-layout { 
+    display: block !important;
+}
+
+.paginate-block{
+    margin-bottom: 20px;
+}
